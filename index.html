@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111019">
+    <meta name="description" content="Turn letters, symbols, and words into copyable ASCII art.">
+    <title>Glyph — ASCII art generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Glyph home">
+          <span class="brand-mark" aria-hidden="true">g.</span>
+          <span>glyph<span class="brand-dot">/</span></span>
+        </a>
+        <span class="topbar-note"><span class="status-dot"></span> A tiny text experiment</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span>01</span> &nbsp; TYPE, TRANSFORM, SHARE</p>
+        <h1 id="page-title">Words with a<br><span>different shape.</span></h1>
+        <p class="intro-copy">Turn any letter, symbol, or phrase into a little piece of ASCII art. Make it yours, then copy it anywhere.</p>
+      </section>
+
+      <section class="workspace" aria-label="ASCII art generator">
+        <div class="panel input-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-kicker">YOUR INPUT</p>
+              <h2>Start with a character</h2>
+            </div>
+            <span class="step-number">A</span>
+          </div>
+
+          <label class="sr-only" for="text-input">Text to turn into ASCII art</label>
+          <textarea id="text-input" maxlength="240" spellcheck="false" placeholder="Type something...">HELLO</textarea>
+          <div class="input-meta">
+            <span>Letters, numbers, symbols — go on.</span>
+            <span id="char-count">5 / 240</span>
+          </div>
+
+          <div class="control-grid">
+            <div class="control">
+              <label for="font-select">TYPE STYLE</label>
+              <select id="font-select">
+                <option value="sans-serif">Modern sans</option>
+                <option value="serif">Editorial serif</option>
+                <option value="monospace">Terminal mono</option>
+              </select>
+            </div>
+            <div class="control">
+              <label for="width-range">ART WIDTH <span id="width-value">64</span></label>
+              <input id="width-range" type="range" min="32" max="100" step="4" value="64">
+            </div>
+          </div>
+
+          <label class="toggle-row" for="invert-toggle">
+            <span class="toggle-copy">
+              <span class="toggle-title">Invert the tones</span>
+              <span class="toggle-subtitle">Light art on a dark field</span>
+            </span>
+            <input id="invert-toggle" type="checkbox">
+            <span class="toggle" aria-hidden="true"></span>
+          </label>
+          <p class="privacy-note"><span aria-hidden="true">✳</span> Runs right here in your browser. Nothing gets uploaded.</p>
+        </div>
+
+        <div class="panel output-panel">
+          <div class="panel-heading output-heading">
+            <div>
+              <p class="panel-kicker">THE RESULT</p>
+              <h2>Your art, in characters</h2>
+            </div>
+            <span class="live-badge"><span></span> LIVE</span>
+          </div>
+
+          <div class="art-frame" id="art-frame">
+            <pre id="art-output" aria-label="Generated ASCII art" aria-live="polite"></pre>
+          </div>
+          <div class="output-footer">
+            <span id="output-meta">64 columns <span class="meta-separator">·</span> ready to copy</span>
+            <div class="actions">
+              <button class="button button-secondary" id="download-button" type="button" aria-label="Download ASCII art as a text file">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.75v9m0 0 3.25-3.25M10 11.75 6.75 8.5M3.75 13.25v2a1 1 0 0 0 1 1h10.5a1 1 0 0 0 1-1v-2"/></svg>
+                <span>Save .txt</span>
+              </button>
+              <button class="button button-primary" id="copy-button" type="button">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="9.25" height="10" rx="1.5"/><path d="M13 7V4.75a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v8.5a1 1 0 0 0 1 1H7"/></svg>
+                <span>Copy art</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>MADE OF LETTERS & LIGHT</span>
+        <span>Give your text a little character <span class="footer-star">✳</span></span>
+      </footer>
+    </main>
+  </body>
+</html>
