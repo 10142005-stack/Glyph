@@ -14,15 +14,14 @@
       <header class="topbar">
         <a class="brand" href="#" aria-label="Glyph home">
           <span class="brand-mark" aria-hidden="true">g.</span>
-          <span>glyph<span class="brand-dot">/</span></span>
+          <span>glyph<span class="brand-dot">.</span></span>
         </a>
-        <span class="topbar-note"><span class="status-dot"></span> A tiny text experiment</span>
+        <span class="header-label">TEXT & IMAGE LAB</span>
       </header>
 
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow"><span>01</span> &nbsp; TYPE, TRANSFORM, SHARE</p>
-        <h1 id="page-title">Words with a<br><span>different shape.</span></h1>
-        <p class="intro-copy">Turn any letter, symbol, or phrase into a little piece of ASCII art. Make it yours, then copy it anywhere.</p>
+        <p class="eyebrow"><span>01</span> / CHARACTER STUDIO</p>
+        <h1 id="page-title">Make text <span>visible.</span></h1>
       </section>
 
       <section class="workspace" aria-label="ASCII art generator">
@@ -30,32 +29,46 @@
           <div class="panel-heading">
             <div>
               <p class="panel-kicker">YOUR INPUT</p>
-              <h2>Start with a character</h2>
+              <h2 id="input-title">Start with a character</h2>
             </div>
-            <span class="step-number">A</span>
+            <span class="step-number">01</span>
           </div>
 
           <label class="sr-only" for="text-input">Text to turn into ASCII art</label>
-          <textarea id="text-input" maxlength="240" spellcheck="false" placeholder="Type something...">HELLO</textarea>
+          <div class="source-tabs" role="tablist" aria-label="Choose art source">
+            <button class="source-tab is-active" id="text-tab" type="button" role="tab" aria-selected="true" aria-controls="text-source" data-mode="text">Text</button>
+            <button class="source-tab" id="image-tab" type="button" role="tab" aria-selected="false" aria-controls="image-source" data-mode="image">Image</button>
+          </div>
+
+          <div id="text-source" role="tabpanel" aria-labelledby="text-tab">
+            <textarea id="text-input" maxlength="240" spellcheck="false" placeholder="Type something...">HELLO</textarea>
+          </div>
+          <div id="image-source" role="tabpanel" aria-labelledby="image-tab" hidden>
+            <label class="image-drop" id="image-drop" for="image-input">
+              <input id="image-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+              <span class="image-icon" aria-hidden="true">▧</span>
+              <span>
+                <strong id="image-label">Choose an image</strong>
+                <small>PNG, JPG, GIF or WebP</small>
+              </span>
+            </label>
+          </div>
           <div class="input-meta">
             <span>Letters, numbers, symbols — go on.</span>
             <span id="char-count">5 / 240</span>
           </div>
 
           <div class="control-grid">
-            <div class="control">
-              <label for="font-select">TYPE STYLE</label>
-              <select id="font-select">
-                <option value="sans-serif">Modern sans</option>
-                <option value="serif">Editorial serif</option>
-                <option value="monospace">Terminal mono</option>
-              </select>
+            <div class="control font-control">
+              <label>TYPE STYLE</label>
+              <div class="fixed-setting">Monospace</div>
             </div>
-            <div class="control">
-              <label for="width-range">ART WIDTH <span id="width-value">64</span></label>
-              <input id="width-range" type="range" min="32" max="100" step="4" value="64">
+            <div class="control art-width-control">
+              <label for="width-range">ART WIDTH <span id="width-value">220</span></label>
+              <input id="width-range" type="range" min="64" max="320" step="4" value="220">
             </div>
           </div>
+
 
           <label class="toggle-row" for="invert-toggle">
             <span class="toggle-copy">
@@ -72,16 +85,16 @@
           <div class="panel-heading output-heading">
             <div>
               <p class="panel-kicker">THE RESULT</p>
-              <h2>Your art, in characters</h2>
+              <h2 id="output-title">Your art, in characters</h2>
             </div>
-            <span class="live-badge"><span></span> LIVE</span>
+            <span class="live-badge"><span></span> RENDERING</span>
           </div>
 
           <div class="art-frame" id="art-frame">
             <pre id="art-output" aria-label="Generated ASCII art" aria-live="polite"></pre>
           </div>
           <div class="output-footer">
-            <span id="output-meta">64 columns <span class="meta-separator">·</span> ready to copy</span>
+            <span id="output-meta">220 columns <span class="meta-separator">·</span> ready to copy</span>
             <div class="actions">
               <button class="button button-secondary" id="download-button" type="button" aria-label="Download ASCII art as a text file">
                 <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.75v9m0 0 3.25-3.25M10 11.75 6.75 8.5M3.75 13.25v2a1 1 0 0 0 1 1h10.5a1 1 0 0 0 1-1v-2"/></svg>
